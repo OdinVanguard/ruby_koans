@@ -13,8 +13,16 @@
 # and
 #   about_triangle_project_2.rb
 #
+
 def triangle(a, b, c)
-  # WRITE THIS CODE
+	triangletypes=[:scalene,:isosceles,:equilateral]
+	if (a==b || b==c || a==c)
+		if (a==b && a==c && b==c)
+			return triangletypes[2]
+		end
+		return triangletypes[1]
+	end
+	return triangletypes[0]
 end
 
 # Error class used in part 2.  No need to change this code.
