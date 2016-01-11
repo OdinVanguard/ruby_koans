@@ -29,8 +29,61 @@ require File.expand_path(File.dirname(__FILE__) + '/neo')
 #
 # Your goal is to write the score method.
 
+class InvalidDiceCountError < RuntimeError
+end
+
+def get_counts_hash(dice=[])
+  if (dice.size == 0)
+    raise InvalidDiceCountError,"No dice were rolled!"
+  else
+    countsHash = {}
+    dice.each do |num| 
+      if countsHash.keys.include?(num)
+        countsHash[num] = countsHash[num]+1
+      else
+        countsHash[num] = 1
+      end
+    end
+  end
+  return countsHash
+end
+
 def score(dice)
   # You need to write this method
+  myscore=0
+  begin
+    countsHash = get_counts_hash(dice)
+    puts countsHash
+    countsHash.keys.each do |key|
+      count = countHash[key]
+      if (count >= 3)
+        if key == 1
+          myscore = myscore + 1000
+        else
+          myscore = myscore + 100 * key
+        end
+        if count > 3
+          if key==1
+            myscore = myscore + 100 * (count-3)
+          end
+          if key==5
+            myscore = myscore + 50 * (count-3)
+          end
+        end
+      else
+        if key == 1
+          myscore = myscore + 100 * count
+        else 
+          if key == 5
+            myscore = myscore + 50 * count
+          end
+        end
+      end
+    end
+  rescue InvalidDiceCountError => exception
+    puts exception.message
+  end
+  return myscore
 end
 
 class AboutScoringProject < Neo::Koan
