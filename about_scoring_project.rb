@@ -55,7 +55,7 @@ def score(dice)
     countsHash = get_counts_hash(dice)
     puts countsHash
     countsHash.keys.each do |key|
-      count = countHash[key]
+      count = countsHash[key]
       if (count >= 3)
         if key == 1
           myscore = myscore + 1000
