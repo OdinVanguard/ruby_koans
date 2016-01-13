@@ -29,6 +29,14 @@ class Proxy
       false
     end
   end
+  
+  def number_of_times_called(method_name)
+    if called?(method_name)
+      @messages.count { |message| message == method_name }
+    else
+      0
+    end
+  end
 
   def method_missing(method_name,*args,&block)
     @messages << method_name
