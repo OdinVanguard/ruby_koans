@@ -53,7 +53,7 @@ def score(dice)
   myscore=0
   begin
     countsHash = get_counts_hash(dice)
-    puts countsHash
+    #puts countsHash
     countsHash.keys.each do |key|
       count = countsHash[key]
       if (count >= 3)
