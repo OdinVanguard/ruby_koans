@@ -15,7 +15,7 @@ require File.expand_path(File.dirname(__FILE__) + '/neo')
 
       if num_rolls > 0
         (1..num_rolls).each do |roll|
-          @values << @rands.rand(6)
+          @values << @rands.rand(1..6)
         end
       end
     end
@@ -24,7 +24,7 @@ require File.expand_path(File.dirname(__FILE__) + '/neo')
       @values=[]
       if num_rolls > 0
         (1..num_rolls).each do |roll|
-          @values << @rands.rand(6)
+          @values << @rands.rand(1..6)
         end
       else
         raise RunTimeError("Invalid Dice Count")
